@@ -24,17 +24,15 @@ Ceci est une solution à l'atelier [Création d'une API REST avec Node.js et Exp
 
 ### Le challenge
 
-[Répondez ici : Quels étaient les objectifs de l’atelier ? Par exemple, les fonctionnalités que vous deviez implémenter ou les compétences à acquérir.]
+Il était question de  mettre sur pied une API REST de base.
 
 ### Capture d’écran
 
-![Capture d’écran de votre solution]([Insérez le chemin vers votre capture d’écran, ex. ./screenshot.png])
-
-[Ajoutez une capture d’écran montrant un test de votre API, par exemple une requête dans Postman ou une réponse dans le terminal. Décrivez brièvement ce qu’elle montre.]
+![Capture d’écran de votre solution](./p/Screenshot%202025-04-15%20135254.png)
 
 ### Liens
 
-- Solution URL : [Ajoutez l’URL de votre dépôt GitHub ici]([Insérez le lien])
+- Solution URL : [Dépôt git](https://github.com/warano02/monPremierLab-manage-stock)
 - API Live URL : [Ajoutez l’URL où votre API est hébergée, si applicable]([Insérez le lien])
 
 ---
@@ -43,33 +41,46 @@ Ceci est une solution à l'atelier [Création d'une API REST avec Node.js et Exp
 
 ### Construit avec
 
-[Liste des technologies et outils que vous avez utilisés, ex. Node.js, Express, Postman, etc.]
+- Nodejs
+- Express
+- Insomnia
 
 ### Ce que j’ai appris
 
-[Décrivez ici ce que vous avez appris pendant l’atelier. Incluez éventuellement des extraits de code qui vous rendent fier(e) ou qui illustrent une découverte.]
+Mise en place de la logique de base du fichier de paramétrage d'une API REST
 
 ```javascript
-[Ajoutez un extrait de code ici, si pertinent]
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3001;
+
+// Middleware pour parser les requêtes JSON
+app.use(express.json());
+
+// Route racine par défaut
+app.get('/', (req, res) => {
+  res.send('<strong>MonPremierLab</strong> : Bienvenue et merci de votre participation à ce challenge !');
+});
+
+// Importation des routes
+const routes = require('./routes/index');
+app.use('/api', routes);
+
+// Lancement du serveur
+app.listen(port, () => {
+  console.log(`Serveur démarré sur http://localhost:${port}`);
+});
 ```
 
 ### Développement futur
 
-[Indiquez les aspects que vous souhaitez améliorer ou explorer dans de futurs projets liés à cet atelier, ex. ajouter une base de données, sécuriser l’API, etc.]
-
-### Ressources utiles
-
-- [Nom de la ressource]([Insérez le lien]) - [Expliquez en quoi cette ressource vous a aidé(e) et pourquoi vous la recommandez.]
+Implementer avec une base de donnée réelle
 
 ---
 
 ## Auteur
 
-- GitHub - [@votreusername]([Insérez le lien vers votre profil GitHub])
+- GitHub - [@Warano02](https://github.com/warano02)
 - LinkedIn - [@votreusername]([Insérez le lien vers votre profil LinkedIn, si applicable])
 
 ---
-
-## Remerciements
-
-[Remerciez ici les personnes ou ressources qui vous ont aidé(e) pendant l’atelier, ex. formateurs, collègues, documentation spécifique.]
